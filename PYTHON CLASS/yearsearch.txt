@@ -1,0 +1,60 @@
+import java.util.*;
+public class yearSearch
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the number of years:");
+        int n=sc.nextInt();
+        int yrs[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            System.out.println("Enter the year for yrs["+i+"]:");
+            yrs[i]=sc.nextInt();
+        }
+            for(int i=0;i<n;i++)
+        {
+            System.out.println("The year at yrs["+i+"]:"+yrs[i]);
+        }
+        //sorting
+        for(int i=0;i<n-1;i++)
+        {
+            int pos=i;
+            for(int j=i+1;j<n;j++)
+            {
+                if(yrs[j]<yrs[pos])
+                pos=j;
+            }
+            int temp=yrs[i];
+            yrs[i]=yrs[pos];
+            yrs[pos]=temp;
+        }
+        System.out.println("Years in Sorted Order:");
+        for(int i=0;i<n;i++)
+        {
+            System.out.println(yrs[i]+" ");
+        }
+        System.out.println("Enter the Year to be Searched:");
+        int x=sc.nextInt();
+        int lb=0,ub=n-1,mid=0,flag=0;
+        //searching
+        while(lb<=ub)
+        {
+            mid=(lb+ub)/2;
+            if(yrs[mid]==x)
+            {
+                flag=1;
+                break;
+            }
+            if(yrs[mid]<x)
+                lb=mid+1;
+            if(yrs[mid]>x)
+                ub=mid-1;
+        }
+        if(flag==1)
+            System.out.println("Record Exists");
+        else
+            System.out.println("Record does not Exist");
+        }
+    }
+      
